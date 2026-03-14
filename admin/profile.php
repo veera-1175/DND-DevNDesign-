@@ -1,0 +1,162 @@
+<?php
+    session_start();
+
+    @include '../login/config.php';
+    include 'common.php';
+    $id_admin = $_SESSION['admin_id'];
+
+    if (isset($_POST['submit'])) {
+        
+        $first_name = mysqli_real_escape_string($conn, $_POST['first_name']);
+        $last_name = mysqli_real_escape_string($conn, $_POST['last_name']);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        
+        $query = "UPDATE admin SET first_name_admin = '$first_name', last_name_admin = '$last_name', email_admin = '$email' WHERE id_admin = '$id_admin'";
+        mysqli_query($conn, $query);
+
+        $current_password = mysqli_real_escape_string($conn, md5($_POST['current_password']));
+        $new_password = mysqli_real_escape_string($conn, md5($_POST['new_password']));
+        $repeat_new_password = mysqli_real_escape_string($conn, md5($_POST['repeat_new_password']));
+
+        if(!empty($current_password) || !empty($new_password) || !empty($repeat_new_password)){
+            $old_pass = $_POST['old_pass'];
+            if($current_password != $old_pass){
+                $message[] = 'old password not matched!';
+            }elseif($new_password != $repeat_new_password){
+                $message[] = 'confirm password not matched!';
+            }else{
+                mysqli_query($conn, "UPDATE admin SET password_admin = '$repeat_new_password' WHERE id_admin = '$id_admin'") or die('query failed');
+                $message[] = 'password updated successfully!';
+            }
+        }
+
+        header("Location: profile.php");
+        exit();
+    }
+
+    $select = mysqli_query($conn, "SELECT * FROM admin WHERE id_admin = '$id_admin'") or die('query failed');
+    if(mysqli_num_rows($select) > 0){
+        $fetch = mysqli_fetch_assoc($select);
+    }
+    
+    $query = "SELECT first_name_admin, last_name_admin, email_admin FROM admin WHERE id_admin = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $id_admin);
+    $stmt->execute();
+    $stmt->bind_result($first_name, $last_name, $email);
+    $stmt->fetch();
+    $stmt->close();
+?>
+
+<?php
+    $ex=$fetch['exentation'];
+
+    if(isset( $_FILES['cr']["name"])){
+        if ($fetch['statut'] == 1) {
+            unlink('C:\xampp\htdocs\DND\admin\photoadmin\\'.$id_admin.'.'.$ex);
+        }
+        $fileType = $_FILES['cr']["type"];
+        $fileData =  $_FILES['cr']["tmp_name"];
+        $sizeData =  $_FILES['cr']["size"];
+        $fileName= $_FILES['cr']["name"];
+        $fileNameParts = explode('.', $fileName);
+        $ext = end($fileNameParts);
+        $nemnew=$id_admin.'.'.$ext;
+        $n=1;
+
+        if($ext=='jpg' || $ext=='jpge'  || $ext=='png'  ){
+            $sql9= "UPDATE admin set statut='$n', exentation='$ext' where id_admin='$id_admin'";
+            $result4 = mysqli_query($conn, $sql9 );
+            move_uploaded_file($fileData,'C:\xampp\htdocs\DND\admin\photoadmin\\'.$nemnew);
+        }else{
+            echo "error upload photo";
+        }
+    }
+?>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <section style="padding-bottom: 25px;">
+                <div class="headline">
+                    <h3><i class="fa-regular fa-circle-user"></i> My Account</h3>
+                </div>
+
+                <div class="section-wrapper">
+                    <div class="avatar-wrapper" style="margin-left: 18px;">
+                        <!-- <img class="profile-pic" src="img/pic-1.jpg" alt="" /> -->
+                        <?php   
+                            if($fetch['statut']==0)  {
+                                echo '<img class="profile-pic" style="height: 85%; width: 85%;" src="photoadmin/default.jpg">' ;
+                            }
+                            else{
+                                $ex=$fetch['exentation'];
+                                $namf=$id_admin.'.'.$ex;
+                                echo ' <img class="profile-pic" style="height: 85%; width: 85%;" src="photoadmin/'.$namf.'">';
+                            }
+                        ?>
+                    </div>
+
+                    <div class="fields">
+                        <div class="infos">
+                            <h5>Upload new profile picture</h5>
+                            <input type="file" name="cr">
+                            <button class="inline-btn" type="submit" name="sub" value="send" style="font-size: .9rem; padding: .1rem .2rem; font-weight: 600; cursor: pointer;">Update</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-wrapper">
+                    <div class="infos">
+                        <div class="fields">
+                            <div class="field-submit">
+                                <h5>First Name</h5>
+                                <input type="text" name="first_name" value="<?php echo htmlspecialchars($first_name); ?>">
+                            </div>
+                                    
+                            <div class="field-submit">
+                                <h5>Last Name</h5>
+                                <input type="text" name="last_name" value="<?php echo htmlspecialchars($last_name); ?>">
+                            </div>
+                            
+                            <div class="field-submit">
+                                <h5>Email</h5>
+                                <input type="text" name="email" value="<?php echo htmlspecialchars($email); ?>" style="width: 350px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <div class="headline" style="padding-top: 0;">
+                    <h3><i class="fa-solid fa-lock"></i> Password & Security</h3>
+                </div>
+
+                <div class="section-wrapper">
+                    <div class="infos">
+                        <div class="fields">
+                            <input type="hidden" name="old_pass" value="<?php echo $fetch['password_admin']; ?>">
+
+                            <div class="field-submit">
+                                <h5>Current Password</h5>
+                                <input type="password" name="current_password" style="width: 100%;">
+                            </div>
+                            
+                            <div class="field-submit">
+                                <h5>New Password</h5>
+                                <input type="password" name="new_password" style="width: 100%;">
+                            </div>
+                            
+                            <div class="field-submit">
+                                <h5>Repeat New Password</h5>
+                                <input type="password" name="repeat_new_password" style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="btn-container">
+                <input name="submit" type="submit" class="inline-btn" value="Save Changes" style="font-size: .9rem; padding: .5rem .6rem; font-weight:700; cursor: pointer;">
+            </div>
+        </form>
+    </div>
+<?php include 'footer.php'; ?>

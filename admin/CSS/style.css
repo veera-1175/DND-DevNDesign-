@@ -1,0 +1,99 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table th, .table td {
+    padding: 8px;
+    border: 1px solid #c707e0;
+    word-break: break-word;
+	border-color: #f3f1f1;
+}
+.table thead {
+    background-color: #dadfe4; /* Keep your header background */
+}
+.icon-black {
+    color: rgb(119, 15, 139) !important;
+}
+.form-container {
+	background: #fff;
+	margin: 60px auto;
+	padding: 30px 40px;
+	max-width: 720px;
+	border-radius: 10px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+h1 {
+	text-align: center;
+	margin-bottom: 10px;
+}
+.form-row {
+	display: flex;
+	gap: 15px;
+	margin-bottom: 16px;
+}
+.form-group {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+label {
+	font-size: 14px;
+	margin-bottom: 6px;
+	color: #333;
+}
+input, select, textarea {
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	font-size: 14px;
+}
+textarea {
+	resize: vertical;
+}
+.infos {
+   flex: 1;
+   margin-left: 20px;
+   margin-top: 35px;
+}
+.errormessage{
+   margin: 5px 0;
+   width: 100%;
+   border-radius: 5px;
+   padding: 10px;
+   text-align: center;
+   background-color: #111;
+   color: #fff;
+   font-size: 50px;
+}
+.box-info {
+	list-style: none;  
+	display: flex;
+    justify-content: space-around;
+    background-color: #e86aec;
+    padding: 20px;
+    border-radius: 10px;
+	font-size: 20px; 
+	gap: 300px;
+	text-align: center; 
+	color: #000;
+}
+.box-info li i {
+	font-size: 48px;
+	color: black; 
+  }
+.btn1{
+	border-radius: .5rem;
+	width: 350px;
+	font-size: 1.8rem;
+	cursor: pointer;
+	padding: 1rem 3rem;
+	text-align: center;
+	margin-top: 1rem;
+	background-color: #8e44ad;
+ }
+ .center-box-info {
+    display: flex;
+    justify-content: center;   
+    align-items: center;       
+    min-height: 100vh;         
+}
