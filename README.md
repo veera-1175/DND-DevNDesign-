@@ -12,13 +12,13 @@ The system focuses on **simplicity, security, and responsive design**, ensuring 
 
 ## ✨ Features
 
-* 🔹 User registration and login system
-* 🔹 Role-based access (Client / Freelancer)
-* 🔹 Job posting and job application system
-* 🔹 Search and filtering for projects
-* 🔹 File upload and download support
-* 🔹 Secure authentication and session management
-* 🔹 Responsive UI for all devices
+*  User registration and login system
+*  Role-based access (Client / Freelancer)
+*  Job posting and job application system
+*  Search and filtering for projects
+*  File upload and download support
+*  Secure authentication and session management
+*  Responsive UI for all devices
 
 ---
 
