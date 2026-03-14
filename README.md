@@ -1,8 +1,8 @@
- DevNDesign 🚀
+# DevNDesign 🚀
 
 A freelancing platform that connects **developers and designers with clients** to collaborate on tech and design projects.
 
- 📌 Project Overview
+## 📌 Project Overview
 
 DevNDesign is a web-based freelancing platform designed to help clients find skilled developers and designers for their projects. The platform allows clients to post jobs, freelancers to apply for projects, and both parties to collaborate efficiently through a secure and user-friendly interface.
 
@@ -10,45 +10,45 @@ The system focuses on **simplicity, security, and responsive design**, ensuring 
 
 ---
 
- ✨ Features
+## ✨ Features
 
- 🔹 User registration and login system
- 🔹 Role-based access (Client / Freelancer)
- 🔹 Job posting and job application system
- 🔹 Search and filtering for projects
- 🔹 File upload and download support
- 🔹 Secure authentication and session management
- 🔹 Responsive UI for all devices
+* 🔹 User registration and login system
+* 🔹 Role-based access (Client / Freelancer)
+* 🔹 Job posting and job application system
+* 🔹 Search and filtering for projects
+* 🔹 File upload and download support
+* 🔹 Secure authentication and session management
+* 🔹 Responsive UI for all devices
 
 ---
 
- 🛠 Tech Stack
+## 🛠 Tech Stack
 
-Frontend
+**Frontend**
 
 * HTML
 * CSS
 * JavaScript
 
-Backend
+**Backend**
 
 * PHP
 
-Database
+**Database**
 
 * MySQL
 
-Server
+**Server**
 
 * Apache (XAMPP)
 
-Development Tools
+**Development Tools**
 
 * Visual Studio Code
 
 ---
 
- 🔒 Security Features
+## 🔒 Security Features
 
 * Password hashing using `password_hash()`
 * Protection against SQL Injection using **Prepared Statements**
@@ -57,15 +57,15 @@ Development Tools
 
 ---
 
- ⚙️ Installation & Setup
+## ⚙️ Installation & Setup
 
- 1️⃣ Clone the repository
+### 1️⃣ Clone the repository
 
 ```bash
 git clone https://github.com/your-username/devndesign.git
 ```
 
- 2️⃣ Move project to XAMPP
+### 2️⃣ Move project to XAMPP
 
 Copy the project folder into:
 
@@ -73,20 +73,20 @@ Copy the project folder into:
 xampp/htdocs/
 ```
 
- 3️⃣ Start XAMPP
+### 3️⃣ Start XAMPP
 
 Start:
 
 * Apache
 * MySQL
 
- 4️⃣ Import Database
+### 4️⃣ Import Database
 
 1. Open **phpMyAdmin**
 2. Create a new database
 3. Import the provided `.sql` file
 
- 5️⃣ Run the project
+### 5️⃣ Run the project
 
 Open your browser and visit:
 
@@ -96,7 +96,7 @@ http://localhost/devndesign
 
 ---
 
- 📂 Project Structure
+## 📂 Project Structure
 
 ```
 DevNDesign
@@ -113,8 +113,7 @@ DevNDesign
 └── dashboard.php
 ```
 
-
- 📈 Future Improvements
+## 📈 Future Improvements
 
 * Real-time chat between clients and freelancers
 * Payment gateway integration
@@ -123,12 +122,12 @@ DevNDesign
 
 ---
 
- 👨‍💻 Author
+## 👨‍💻 Author
 
-Veerasegaran V P
+**Veerasegaran V P**
 
 ---
 
- 📄 License
+## 📄 License
 
 This project is for **educational and demonstration purposes**.
